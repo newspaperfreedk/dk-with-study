@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK with Study - ગુજરાતી અભ્યાસ સામગ્રી</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-green-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-r from-blue-600 to-green-600 p-3 rounded-xl">
+                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800" id="site-name">DK with Study</h1>
+                        <p class="text-sm text-gray-600">શિક્ષણ અને નોકરીનું કેન્દ્રસ્થાન</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <button onclick="showSection('home')" class="nav-btn active flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200">
+                        <span>મુખ્ય પૃષ્ઠ</span>
+                    </button>
+                    <button onclick="showSection('materials')" class="nav-btn flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200">
+                        <span>અભ્યાસ સામગ્રી</span>
+                    </button>
+                    <button onclick="showSection('videos')" class="nav-btn flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200">
+                        <span>વિડિયો લેક્ચર</span>
+                    </button>
+                    <button onclick="showSection('jobs')" class="nav-btn flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200">
+                        <span>નોકરીની તકો</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero-section" class="py-20 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-6xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-6">
+                    DK with Study
+                </h1>
+                <p class="text-2xl text-gray-600 mb-8">
+                    ગુજરાતી ભાષામાં શ્રેષ્ઠ અભ્યાસ સામગ્રી અને વિડિયો લેક્ચર્સ
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showSection('materials')" class="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-lg transition-all">
+                        અભ્યાસ સામગ્રી જુઓ
+                    </button>
+                    <button onclick="showSection('videos')" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all">
+                        વિડિયો લેક્ચર્સ
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Materials Section -->
+        <section id="materials-section" class="py-20 bg-white hidden">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-6">અભ્યાસ સામગ્રી કલેક્શન</h2>
+                    <p class="text-xl text-gray-600">તમારી પરીક્ષાની તૈયારી માટે શ્રેષ્ઠ અને અપડેટેડ અભ્યાસ સામગ્રી મેળવો</p>
+                </div>
+
+                <div id="materials-loading" class="text-center py-12">
+                    <div class="text-2xl font-bold text-gray-600 mb-4">લોડ થઈ રહ્યું છે...</div>
+                    <div class="text-gray-500">Admin ના latest changes લાવી રહ્યા છીએ</div>
+                </div>
+
+                <div id="materials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+                    <!-- Materials will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section id="videos-section" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50 hidden">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-6">વિડિયો લેક્ચર કલેક્શન</h2>
+                    <p class="text-xl text-gray-600">શ્રેષ્ઠ શિક્ષકો દ્વારા તૈયાર કરાયેલા વિડિયો લેક્ચર્સ જુઓ</p>
+                </div>
+
+                <div id="videos-loading" class="text-center py-12">
+                    <div class="text-2xl font-bold text-gray-600 mb-4">વીડિયો લોડ થઈ રહ્યા છે...</div>
+                    <div class="text-gray-500">Admin ના latest videos લાવી રહ્યા છીએ</div>
+                </div>
+
+                <div id="videos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Jobs Section -->
+        <section id="jobs-section" class="py-20 bg-gray-50 hidden">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-6">નોકરીની તકો</h2>
+                    <p class="text-xl text-gray-600 mb-8">લેટેસ્ટ સરકારી અને ખાનગી નોકરીની જાહેરાતો</p>
+                </div>
+
+                <div id="jobs-loading" class="text-center py-12">
+                    <div class="text-2xl font-bold text-gray-600 mb-4">લોડ થઈ રહ્યું છે...</div>
+                    <div class="text-gray-500">Admin ના latest job postings લાવી રહ્યા છીએ</div>
+                </div>
+
+                <div id="jobs-grid" class="space-y-6 hidden">
+                    <!-- Jobs will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4" id="footer-site-name">DK with Study</h3>
+                <p class="text-gray-400">ગુજરાતી ભાષામાં શ્રેષ્ઠ શિક્ષણ સામગ્રી</p>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-gray-400">&copy; 2025 <span id="footer-copyright">DK with Study</span>. બધા અધિકારો સુરક્ષિત.</p>
+                <div class="mt-4 space-y-2">
+                    <p class="text-gray-400">📧 <span id="footer-email">admin@dkwithstudy.com</span></p>
+                    <p class="text-gray-400">📞 <span id="footer-phone">+91 98765 43210</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-2xl w-11/12 md:w-2/3 lg:w-1/2 relative">
+            <button onclick="closeVideoModal()" class="absolute -top-4 -right-4 bg-white text-black rounded-full h-10 w-10 flex items-center justify-center text-2xl font-bold">&times;</button>
+            <div class="aspect-w-16 aspect-h-9">
+                <video id="video-player" class="w-full h-full" controls autoplay src=""></video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 hidden">
+        <div id="notification-content"></div>
+    </div>
+
+    <!-- AI Assistant Chat -->
+    <div id="chat-bubble" class="fixed bottom-8 right-8 bg-gradient-to-r from-blue-600 to-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg transform hover:scale-110 transition-transform duration-300 z-50">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+    </div>
+
+    <div id="chat-window" class="hidden fixed bottom-28 right-8 w-96 bg-white rounded-2xl shadow-2xl flex flex-col z-50 transform transition-all duration-300 origin-bottom-right">
+        <div class="bg-gradient-to-r from-blue-600 to-green-600 text-white p-4 rounded-t-2xl flex justify-between items-center">
+            <h3 class="font-bold text-lg">AI સહાયક</h3>
+            <button id="close-chat" class="text-white text-2xl leading-none hover:opacity-75">&times;</button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto h-80">
+            <!-- Messages will appear here -->
+            <div class="flex justify-start mb-3">
+                <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs">
+                    નમસ્તે! હું તમારી કેવી રીતે મદદ કરી શકું?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-gray-100 rounded-b-2xl border-t border-gray-200">
+            <form id="chat-form" class="flex items-center space-x-2">
+                <input type="text" id="chat-input" placeholder="તમારો પ્રશ્ન લખો..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+                <button type="submit" class="bg-blue-600 text-white w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center hover:bg-blue-700 transition-colors">
+                    <svg class="w-5 h-5 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // Global variables
+        let currentSection = 'home';
+        
+        // API Helper
+        const API_BASE = 'http://localhost:3001/api';
+        
+        async function apiCall(endpoint) {
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`);
+                if (response.ok) {
+                    return await response.json();
+                }
+            } catch (error) {
+                console.warn('API Error:', error);
+            }
+            return null;
+        }
+        
+        // Navigation
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-green-600', 'text-white');
+                btn.classList.add('text-gray-700', 'hover:bg-gray-100');
+            });
+            
+            // Show selected section
+            if (section === 'home') {
+                document.getElementById('hero-section').classList.remove('hidden');
+            } else {
+                document.getElementById(`${section}-section`).classList.remove('hidden');
+                if (section === 'materials') loadMaterials();
+                if (section === 'videos') loadVideos();
+                if (section === 'jobs') loadJobs();
+            }
+            
+            // Update active nav button
+            event.target.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-green-600', 'text-white');
+            event.target.classList.remove('text-gray-700', 'hover:bg-gray-100');
+            
+            currentSection = section;
+        }
+        
+        // Load materials
+        let materialsLoaded = false;
+        async function loadMaterials() {
+            if (materialsLoaded) return; // Prevent re-loading
+
+            const loading = document.getElementById('materials-loading');
+            const grid = document.getElementById('materials-grid');
+            
+            loading.classList.remove('hidden');
+            grid.classList.add('hidden');
+            
+            const materials = await apiCall('/materials');
+            
+            loading.classList.add('hidden');
+            grid.innerHTML = '';
+
+            if (materials && materials.length > 0) {
+                grid.innerHTML = materials.filter(m => m.status === 'Published' || !m.status).map(material => `
+                    <div class="bg-white rounded-2xl shadow-xl p-6 border hover:transform hover:scale-105 transition-all">
+                        <div class="bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl w-fit mb-4">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">${material.title}</h3>
+                        <p class="text-gray-600 mb-4">${material.description}</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm text-gray-500">${material.size} • ${material.type}</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                                ${material.category}
+                            </span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="${material.filePath}" target="_blank" class="flex-1 text-center bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors font-semibold">
+                                જુઓ
+                            </a>
+                            <a href="${material.filePath}" download class="flex-1 text-center bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all font-semibold">
+                                ડાઉનલોડ
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+                materialsLoaded = true; // Set flag after successful load
+            } else {
+                 grid.innerHTML = '<p class="text-center text-gray-500 col-span-full">હાલમાં કોઈ અભ્યાસ સામગ્રી ઉપલબ્ધ નથી.</p>';
+            }
+            
+            grid.classList.remove('hidden');
+        }
+        
+        let videosLoaded = false;
+        async function loadVideos() {
+            if (videosLoaded) return;
+
+            const loadingDiv = document.getElementById('videos-loading');
+            const grid = document.getElementById('videos-grid');
+            loadingDiv.classList.remove('hidden');
+            grid.classList.add('hidden');
+
+            const videos = await apiCall('/videos');
+
+            loadingDiv.classList.add('hidden');
+            grid.innerHTML = '';
+
+            if (videos && videos.length > 0) {
+                videos.forEach(video => {
+                    const card = `
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 flex flex-col">
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">${video.title}</h3>
+                                <p class="text-gray-600 text-sm mb-4">${video.description}</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 border-t border-gray-200 flex gap-3">
+                                <button onclick="playVideo('${video.filePath}')" class="flex-1 text-center bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-purple-700 transition-colors">પ્લે કરો</button>
+                                <a href="${video.filePath}" download class="flex-1 text-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors">ડાઉનલોડ</a>
+                            </div>
+                        </div>
+                    `;
+                    grid.innerHTML += card;
+                });
+                grid.classList.remove('hidden');
+                videosLoaded = true;
+            } else {
+                grid.innerHTML = '<p class="text-center text-gray-500 col-span-full">હાલમાં કોઈ વીડિયો ઉપલબ્ધ નથી.</p>';
+                grid.classList.remove('hidden');
+            }
+        }
+
+        function playVideo(videoUrl) {
+            const modal = document.getElementById('video-modal');
+            const player = document.getElementById('video-player');
+            player.src = videoUrl;
+            modal.classList.remove('hidden');
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const player = document.getElementById('video-player');
+            player.pause();
+            player.src = '';
+            modal.classList.add('hidden');
+        }
+
+        // Jobs
+        let jobsLoaded = false;
+        async function loadJobs() {
+            if (jobsLoaded) return;
+
+            const loadingDiv = document.getElementById('jobs-loading');
+            const grid = document.getElementById('jobs-grid');
+            loadingDiv.classList.remove('hidden');
+            grid.classList.add('hidden');
+
+            const jobs = await apiCall('/jobs');
+
+            loadingDiv.classList.add('hidden');
+            grid.innerHTML = '';
+
+            if (jobs && jobs.length > 0) {
+                jobs.forEach(job => {
+                    const jobCard = `
+                        <div class="bg-white rounded-2xl shadow-xl p-6 flex flex-col sm:flex-row justify-between items-start gap-4 hover:shadow-2xl transition-all">
+                            <div class="flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800 mb-1">${job.title}</h3>
+                                <div class="text-md text-gray-600 mb-2">${job.company} - <span class="text-gray-500">${job.location}</span></div>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    ${(job.tags || []).map(tag => `<span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">${tag}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <a href="${job.applyLink || '#'}" target="_blank" class="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-3 rounded-lg font-semibold">વધુ વિગતો</a>
+                                <p class="text-sm text-gray-500 mt-2">પોસ્ટ: ${new Date(job.posted_on).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                    `;
+                    grid.innerHTML += jobCard;
+                });
+                grid.classList.remove('hidden');
+                jobsLoaded = true;
+            } else {
+                grid.innerHTML = '<p class="text-center text-gray-500 col-span-full">હાલમાં કોઈ નોકરી ઉપલબ્ધ નથી.</p>';
+                grid.classList.remove('hidden');
+            }
+        }
+
+        // Load settings
+        async function loadSettings() {
+            const data = await apiCall('/settings');
+            if (data) {
+                document.getElementById('site-name').textContent = data.siteName || 'DK with Study';
+                document.getElementById('footer-site-name').textContent = data.siteName || 'DK with Study';
+                document.getElementById('footer-copyright').textContent = data.siteName || 'DK with Study';
+                document.getElementById('footer-email').textContent = data.contactEmail || 'admin@dkwithstudy.com';
+                document.getElementById('footer-phone').textContent = data.contactPhone || '+91 98765 43210';
+            }
+        }
+
+        window.onload = function() {
+            loadSettings();
+
+            // --- CHAT IMPLEMENTATION (LONG POLLING) ---
+            const chatBubble = document.getElementById('chat-bubble');
+            const chatWindow = document.getElementById('chat-window');
+            const closeChat = document.getElementById('close-chat');
+            const chatForm = document.getElementById('chat-form');
+            const chatInput = document.getElementById('chat-input');
+            const chatMessages = document.getElementById('chat-messages');
+            let isChatHistoryLoaded = false;
+
+            function addMessageToChat(message, sender = 'user') {
+                const messageElement = document.createElement('div');
+                if (sender === 'user') {
+                    messageElement.className = 'flex justify-end mb-3';
+                    messageElement.innerHTML = `<div class="bg-blue-600 text-white p-3 rounded-lg max-w-xs">${message.text}</div>`;
+                } else {
+                    messageElement.className = 'flex justify-start mb-3';
+                    messageElement.innerHTML = `<div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs"><strong>${message.sender}:</strong> ${message.text}</div>`;
+                }
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            async function sendMessage(text) {
+                const message = { sender: 'Student', text: text };
+                addMessageToChat(message, 'user');
+                chatInput.value = '';
+
+                await fetch('/api/chat/send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(message)
+                });
+            }
+
+            async function listenForMessages() {
+                try {
+                    const response = await fetch('/api/chat/listen');
+                    const newMessages = await response.json();
+                    newMessages.forEach(msg => addMessageToChat(msg, 'other'));
+                    listenForMessages(); // Re-connect immediately
+                } catch (error) {
+                    console.error('Long polling error:', error);
+                    setTimeout(listenForMessages, 5000); // Wait 5s before retrying on error
+                }
+            }
+
+            async function loadChatHistory() {
+                if (isChatHistoryLoaded) return;
+                const response = await fetch('/api/chat/history');
+                const history = await response.json();
+                history.forEach(msg => addMessageToChat(msg, msg.sender === 'Student' ? 'user' : 'other'));
+                isChatHistoryLoaded = true;
+            }
+
+            chatBubble.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+                if (!chatWindow.classList.contains('hidden')) {
+                    loadChatHistory();
+                }
+            });
+
+            closeChat.addEventListener('click', () => {
+                chatWindow.classList.add('hidden');
+            });
+
+            chatForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const messageText = chatInput.value.trim();
+                if (messageText) {
+                    sendMessage(messageText);
+                }
+            });
+
+            // Start listening for new messages as soon as the page loads
+            listenForMessages();
+
+            // --- END CHAT IMPLEMENTATION ---
+        };
+</script>
+</html>
